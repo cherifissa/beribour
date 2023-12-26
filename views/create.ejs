@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- include my styles file from public/css folder -->
+    <%- include('partials/navbar') %> <%- include('partials/hero', { children: `
+    <h1 class="mb-5 text-4xl font-bold">Beribours +228</h1>
+    <p class="mb-5 text-slate-300">
+      S'ajouter à la liste des élèves ou étudiants Beribours
+    </p>
+
+    ` }) %>
+    <div class="relative flex-col justify-center overflow-hidden">
+      <div
+        class="w-full p-6 m-auto rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-xl"
+      >
+        <form class="space-y-4" action="/beribour/store" method="POST">
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Entrez votre nom et prénom </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="nom_prenom"
+                placeholder="Nom & Prénom"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.nom_prenom) { %>
+            <p class="text-red-500"><%= errors.nom_prenom.msg %></p>
+            <% } %>
+          </div>
+          <div class="w-full">
+            <div class="label">
+              <span class="label-text">Entrez votre numero de telephone </span>
+            </div>
+            <div class="flex">
+              <select
+                class="select select-bordered join-item"
+                name="t_indication"
+              >
+                <option value="+228">+228</option>
+                <option value="+235">+235</option>
+              </select>
+              <div class="w-full">
+                <input
+                  type="number"
+                  name="numero_telephone"
+                  placeholder="99XXXXXX"
+                  class="w-full input input-bordered"
+                />
+              </div>
+            </div>
+            <% if (errors.numero_telephone) { %>
+            <p class="text-red-500"><%= errors.numero_telephone.msg %></p>
+            <% } %>
+          </div>
+          <div class="w-full">
+            <div class="label">
+              <span class="label-text">Entrez votre numero (whatsapp) </span>
+            </div>
+            <div class="flex">
+              <select
+                class="select select-bordered join-item"
+                name="w_indication"
+              >
+                <option value="+235">+235</option>
+                <option value="+228">+228</option>
+              </select>
+              <div class="w-full">
+                <input
+                  type="number"
+                  name="numero_whatsapp"
+                  placeholder="99XXXXXX"
+                  class="w-full input input-bordered"
+                />
+              </div>
+            </div>
+            <% if (errors.numero_whatsapp) { %>
+            <p class="text-red-500"><%= errors.numero_whatsapp.msg %></p>
+            <% } %>
+          </div>
+
+          <div>
+            <label class="form-control w-full">
+              <div class="label">
+                <span class="label-text">Photo de visage clair </span>
+              </div>
+              <input
+                type="file"
+                name="photo_visage"
+                id="photo_visage"
+                class="file-input file-input-bordered w-full"
+                accept="image/*"
+              />
+            </label>
+            <% if (errors.photo_visage) { %>
+            <p class="text-red-500"><%= errors.photo_visage.msg %></p>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Votre Race ? </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="race"
+                placeholder="Race"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.race) { %>
+            <p class="text-red-500"><%= errors.race.msg %></p>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Votre Keri ? </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="keri"
+                placeholder="Keri"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.keri) { %>
+            <p class="text-red-500"><%= errors.keri.msg %></p>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Votre Keribour ? </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="keribour"
+                placeholder="Keribour"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.keribour) { %>
+            <p class="text-red-500"><%= errors.keribour.msg %></p>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Votre Keribour (2) ? </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="keribourbour"
+                placeholder="Keribour"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.keribourbour) { %>
+            <p class="text-red-500"><%= errors.keribourbour.msg %></p>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Keri du pere ? </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="keri_du_pere"
+                placeholder="Keri du pere"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.keri_du_pere) { %>
+            <p class="text-red-500"><%= errors.keri_du_pere.msg %></p>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Keribour du pere ? </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="keribour_du_pere"
+                placeholder="Keribour du pere"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.keribour_du_pere) { %>
+            <div class="label">
+              <span class="label-text-alt text-red-500 ms-1"
+                ><%= errors.keribour_du_pere.msg %></span
+              >
+            </div>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text"
+                >Village natal (ça peut être différent du village parental)
+              </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="village_natal"
+                placeholder="Village natal"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.village_natal) { %>
+            <div class="label">
+              <span class="label-text-alt text-red-500 ms-1"
+                ><%= errors.village_natal.msg %></span
+              >
+            </div>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Niveau d'études actuel </span>
+            </div>
+            <div class="flex">
+              <select
+                class="select select-bordered w-full"
+                name="niveau_etudes"
+              >
+                <option value="">Niveau d'études</option>
+                <option value="L1">Premiere année</option>
+                <option value="L2">Deuxieme année</option>
+                <option value="L3">Licene</option>
+                <option value="M1">Master 1</option>
+                <option value="M2">Master 2</option>
+              </select>
+            </div>
+            <% if (errors.niveau_etudes) { %>
+            <div class="label">
+              <span class="label-text-alt text-red-500 ms-1"
+                ><%= errors.niveau_etudes.msg %></span
+              >
+            </div>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Filiere ou specialité d'étude </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="option_etude"
+                placeholder="Option d'étude"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.option_etude) { %>
+            <div class="label">
+              <span class="label-text-alt text-red-500 ms-1"
+                ><%= errors.option_etude.msg %></span
+              >
+            </div>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">École/Université actuelle </span>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                name="ecole_universite"
+                placeholder="École/Université actuelle"
+                class="w-full input input-bordered"
+              />
+            </div>
+            <% if (errors.ecole_universite) { %>
+            <div class="label">
+              <span class="label-text-alt text-red-500 ms-1"
+                ><%= errors.ecole_universite.msg %></span
+              >
+            </div>
+            <% } %>
+          </div>
+          <div class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Année d'arrivée à Lomé</span>
+            </div>
+            <div class="flex">
+              <input
+                type="date"
+                name="annee_arrivee"
+                class="w-full input input-bordered"
+                value=""
+              />
+            </div>
+            <% if (errors.annee_arrivee) { %>
+            <div class="label">
+              <span class="label-text-alt text-red-500 ms-1"
+                ><%= errors.annee_arrivee.msg %></span
+              >
+            </div>
+            <% } %>
+          </div>
+          <div>
+            <input
+              class="btn btn-block hover:border-t-teal-400"
+              type="submit"
+              value="Envoyer"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- include my styles file from public/css folder -->
+    <%- include('partials/navbar') %> <%- include('partials/hero', { children: `
+    <h1 class="mb-5 mt-8 text-4xl font-bold">Beribours +228</h1>
+    ` }) %>
+
+    <div class="hero bg-base-200 w-11/12 mx-auto mt-9 rounded-xl">
+        <% if (user != null) { %>
+        <!-- // swo alert and wait 3 seconds and redirect to accueil -->
+        <div class="alert alert-success">
+            <div class="flex-1">
+                <label>Vous êtes déjà connecté, vous allez être redirigé vers la page
+                    d'accueil dans 4 secondes</label>
+            </div>
+            <% } %>
+            <div class="hero-content flex-col mt-16 mb-20">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl font-bold">Se connecter</h1>
+                    <p class="py-1">Provident et a id nisi.</p>
+
+                    <div class="label">
+                        <span class="label-text-alt text-red-500 ms-1"></span>
+                    </div>
+                </div>
+                <div class="card shrink-0 shadow-2xl bg-base-100">
+                    <form class="card-body" action="/loginaction" method="POST">
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">ID</span>
+                            </label>
+                            <input type="text" placeholder="id" name="id" class="input input-bordered w-full"
+                                required />
+                            <div class="label">
+                                <span class="label-text-alt text-red-500 ms-1"></span>
+                            </div>
+                        </div>
+                        <div class="form-control mt-6">
+                            <button class="btn btn-primary">Connecter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>
